@@ -1,4 +1,4 @@
-class Car():
+class Car:
     """一次模拟汽车的简单尝试"""
 
     def __init__(self, make, model, year):
@@ -24,7 +24,6 @@ class Car():
         else:
             print("You can't roll back an odometer.")
 
-
     def increment_odometer(self, miles):
         """将里程表增加指定数值"""
         if miles >= 0:
@@ -33,25 +32,40 @@ class Car():
             print("You can't roll back an odometer.")
 
 
+class Battery:
+    """模拟电动车电瓶"""
+
+    def __init__(self, battery_size=70):
+        """初始化电瓶属性"""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """打印一条描述电瓶容量的信息"""
+        print('This car has a ' + str(self.battery_size) + '-kWh battery.')
+
+    def get_range(self):
+        """电瓶的续航里程"""
+        if self.battery_size == 70:
+            lic = 240
+        elif self.battery_size == 85:
+            lic = 270
+        message = "This car can go approximately " + str(lic)
+        message += " miles on a full charge."
+        print(message)
+
+
 class ElectricCar(Car):
     """电动车的独特之处"""
 
     def __init__(self, make, model, year):
         """初始化父类的属性"""
         super(ElectricCar, self).__init__(make, model, year)
-        self.battery_size = 70
+        self.battery = Battery()
 
-    def describe_battery(self):
-        """打印一条描述电瓶容量的信息"""
-        print('This car has a ' + str(self.battery_size) + '-kWh battery.')
 
-class Battery():
-    def __init__(self, battery_size=70):
-        self.battery_size = battery_size
-
-#my_new_car = Car('audi', 'A6', 2018)
-#print(my_new_car.get_descriptive_name())
-#my_new_car.read_odometer()
+my_new_car = Car('audi', 'A6', 2018)
+print(my_new_car.get_descriptive_name())
+my_new_car.read_odometer()
 my_tesla = ElectricCar('tesla', 'model s', 2018)
 print(my_tesla.get_descriptive_name())
-my_tesla.describe_battery()
+my_tesla.battery.describe_battery()
