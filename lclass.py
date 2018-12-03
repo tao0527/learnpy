@@ -45,7 +45,9 @@ class ElectricCar(Car):
         """打印一条描述电瓶容量的信息"""
         print('This car has a ' + str(self.battery_size) + '-kWh battery.')
 
-
+class Battery():
+    def __init__(self, battery_size=70):
+        self.battery_size = battery_size
 
 #my_new_car = Car('audi', 'A6', 2018)
 #print(my_new_car.get_descriptive_name())
