@@ -62,6 +62,10 @@ class ElectricCar(Car):
         super(ElectricCar, self).__init__(make, model, year)
         self.battery = Battery()
 
+    def fill_gas_tank(self):
+        """电动车没有油箱"""
+        print("This car doesn't need a gas tank.")
+
 
 my_new_car = Car('audi', 'A6', 2018)
 print(my_new_car.get_descriptive_name())
